@@ -1,4 +1,13 @@
 <?php
+/*
+Auteur : David vieira Luis
+Projet : Revision php
+Date : 02.09.2021
+
+
+
+
+*/
 //require "./fonctionsBD.inc.php";
 require "./htmlToPhp.inc.php";
 
@@ -6,10 +15,12 @@ require "./htmlToPhp.inc.php";
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <p><a href="./inscription.php">Inscription    </a>  <a href="./administartion.php">administration</a></p>
 </head>
 <body>
 <?php
@@ -39,31 +50,20 @@ $Choix3 = $_POST['fChoix3'];
   
   </select>
   <br>
-  <!--<select name="fChoix1" id="">
-  <option value="Accrobranche">Accrobranche</option>
-  <option value="vélo">Vélo</option>
-  <option value="Football">Football</option> 
-  
-  </select>-->
-  <?php
 
+  <?php
+// on affiche toute les activité disponibles
   afficherSelectActivities("fChoix1");
   ?>
   <br>
 
-  <!--
-  <select name="fChoix2" id="">
-  <option value="Accrobranche">Accrobranche</option>
-  <option value="vélo">Vélo</option>
-  <option value="Football">Football</option>
-  
-  </select>
--->
 <?php
+// on affiche toute les activité disponibles
 afficherSelectActivities("fChoix2");
 ?>
   <br>
   <?php
+  // on affiche toute les activité disponibles
    afficherSelectActivities("fChoix3");
   ?>
   <br>
@@ -76,6 +76,7 @@ afficherSelectActivities("fChoix2");
   ?>
 
   <?php
+  // on affiche toute les valeurs rentrés dans le formulaire
  if (isset($_POST['insertPrenom'])) {
      echo ("Nom: ".$Nom);
      echo("<br>");
