@@ -22,4 +22,11 @@ function getActivites(){
         echo ($donnees['nomActivite']);
         }*/
 }
+function inscription($classe,$nomActivite){
+    $dbh = getConnexion();
+    $insertActivite = $dbh->prepare('INSERT INTO activite(nomActivite) values(?);');
+    $insertActivite->execute([$nomActivite]);
+    $insertClasse = $dbh->prepare('INSERT INTO classe(nomClasse) values(?);');
+    $insertClasse->execute([$classe]);
+}
 ?>
