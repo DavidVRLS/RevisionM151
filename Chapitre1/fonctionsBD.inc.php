@@ -33,7 +33,7 @@ function afficherActivite(){
     $dbh = getConnexion();
     $select = $dbh->query('SELECT idActivite,nomActivite FROM activite');
     while ($donnees = $select->fetch()){
-        echo ("<p>".$donnees['nomActivite']."<a href=administartion.php?idActiviteModif=".$donnees['idActivite']."> éditer </a>");
+        echo ("<p>".$donnees['nomActivite']."<a href=administartion.php?idActiviteModif=".$donnees['idActivite']."> éditer     </a><a href=administartion.php?idActiviteSupprime=".$donnees['idActivite']."> supprimer </a>");
     }
 
 }
@@ -48,9 +48,15 @@ function changementDeNomActivite($idActivite,$nomActivite)
     while ($result = $cherche->fetch()) {
         if ($result['idActivite'] == $idActivite) {
         $modifie->execute([$nomActivite,$idActivite]);
-        var_dump($result);
+       // var_dump($result);
     }
     }
     
+}
+function suppresionActivite($idASupprimer){
+    $dbh = getConnexion();
+    $supprime = $dbh->prepare('DELETE FROM activite WHERE idActivite = ?');
+    $supprime->execute([$idASupprimer]);
+  //  var_dump($supprime);
 }
 ?>

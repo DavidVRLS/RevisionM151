@@ -66,6 +66,15 @@ $Choix3 = $_POST['fChoix3'];
   <input type="submit" value="Submit">
 <br> 
 <?php
+//pour supprimer
+if (isset($_GET["idActiviteSupprime"])&& !is_null($_GET["idActiviteSupprime"])) {
+    $idActiviteSupprimer = $_GET["idActiviteSupprime"];
+    $_SESSION['idActiviteASupprimer'] = $idActiviteSupprimer;
+    var_dump($_SESSION["idActiviteASupprimer"]);
+    suppresionActivite($_SESSION["idActiviteASupprimer"]);
+}
+
+//pour modifier
 if (isset($_GET["idActiviteModif"]) && !is_null($_GET["idActiviteModif"])) {
     //changementDeNomActivite($_GET["idActiviteModif"]);
     $idActiviteModif = $_GET["idActiviteModif"];
