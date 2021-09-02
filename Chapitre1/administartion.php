@@ -2,6 +2,16 @@
 //require "./fonctionsBD.inc.php";
 require "./htmlToPhp.inc.php";
 
+/*if (isset($_GET["idActiviteModif"])) {
+    changementDeNomActivite($_GET["idActiviteModif"]);
+    /*if (isset($erreur)) {
+        echo ($erreur);
+    }
+    else{ 
+    "vous venez de supprimer un article";
+    }
+}*/
+afficherActivite();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +37,7 @@ $Choix3 = $_POST['fChoix3'];
 ?>    
 
 
-<form action="" method="POST">
+<form action="" method="GET">
   <label for="fNomActivite">Nom de l'Activité</label><br>
   <input type="text" id="fNomActivite" name="insertNomActivite"><br>
   <label for="fNomClasse">Nom de la classe</label><br>
@@ -51,14 +61,46 @@ $Choix3 = $_POST['fChoix3'];
   
   </select>
 -->
+
   <br>
   <input type="submit" value="Submit">
-<br>
+<br> 
+<?php
+if (isset($_GET["idActiviteModif"]) && !is_null($_GET["idActiviteModif"])) {
+    //changementDeNomActivite($_GET["idActiviteModif"]);
+    $idActiviteModif = $_GET["idActiviteModif"];
+    $_SESSION['idActivite'] = $idActiviteModif;
+    ?>
+<form action="" method="get">
+<label for="fNouveauNomActivite">Nouveau nom de l'Activité</label><br>
+  <input type="text" id="fNomActivite" name="insertNouveauNomActivite"><br>
+  <label for="fNomClasse">Nouveau nom de la classe</label><br>
+  <input type="text" id="fNouveauNomClasse" name="insertNouveauNomClasse"><br>
 
+
+  <input type="submit" value="Submit">
+
+
+
+   <?php 
+ }
+ 
+ $nouveauNomActivite = $_GET['insertNouveauNomActivite'];
+var_dump($_SESSION['idActivite']);
+var_dump($nouveauNomActivite);
+ changementDeNomActivite($_SESSION['idActivite'],$nouveauNomActivite);
+ 
+ 
+ ?>
+
+
+
+
+</form>
   
   <?php
-  if (isset($_POST['insertNomClasse'])) {
-    inscription($_POST['insertNomClasse'],$_POST['insertNomActivite']);
+  if (($_GET['insertNomClasse']!= "" )) {
+    inscription($_GET['insertNomClasse'],$_GET['insertNomActivite']);
   }
   
   ?>
